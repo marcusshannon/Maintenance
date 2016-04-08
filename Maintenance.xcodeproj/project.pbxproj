@@ -193,6 +193,7 @@
 				TargetAttributes = {
 					D29FC60A1CB72FD700DD5BC7 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = RGEP6KZW5J;
 					};
 					D29FC61E1CB72FD700DD5BC7 = {
 						CreatedOnToolsVersion = 7.3;
@@ -401,10 +402,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Maintenance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.akiba.Maintenance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -412,10 +417,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Maintenance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.akiba.Maintenance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -484,6 +493,7 @@
 				D29FC6351CB72FD700DD5BC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D29FC6361CB72FD700DD5BC7 /* Build configuration list for PBXNativeTarget "MaintenanceTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +502,7 @@
 				D29FC6381CB72FD700DD5BC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D29FC6391CB72FD700DD5BC7 /* Build configuration list for PBXNativeTarget "MaintenanceUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +511,7 @@
 				D29FC63B1CB72FD700DD5BC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
