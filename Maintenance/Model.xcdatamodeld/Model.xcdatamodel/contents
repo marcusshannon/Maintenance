@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+    <entity name="ServiceRequest" representedClassName="ServiceRequest" syncable="YES">
+        <attribute name="inProgress" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="srNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="taskDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taskEnd" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="taskStart" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="travelEnd" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="travelStart" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="Worker" representedClassName="Worker" syncable="YES">
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Worker" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="ServiceRequest" positionX="-54" positionY="9" width="128" height="165"/>
+    </elements>
+</model>
