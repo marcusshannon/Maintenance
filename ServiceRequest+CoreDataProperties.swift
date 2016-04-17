@@ -20,7 +20,7 @@ extension ServiceRequest {
     @NSManaged var travelEnd: NSDate?
     @NSManaged var location: String?
     @NSManaged var taskDescription: String?
-    @NSManaged var srNumber: NSNumber?
+    @NSManaged var srNumber: String?
     @NSManaged var inProgress: NSNumber?
 
 }

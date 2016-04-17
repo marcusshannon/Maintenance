@@ -1,31 +1,31 @@
 //
-//  SRInputViewController.swift
+//  ServiceRequestNumberInputViewController.swift
 //  Maintenance
 //
-//  Created by Marcus Shannon on 4/10/16.
+//  Created by Marcus Shannon on 4/16/16.
 //  Copyright © 2016 Metro Self Storage. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class SRInputViewController: UIViewController {
+class ServiceRequestNumberInputViewController: UIViewController {
+    
+    var serviceRequest: ServiceRequest!
     
     @IBOutlet weak var serviceRequestInput: UITextField!
     
-    var moc: NSManagedObjectContext!
-    var data: ServiceRequest!
-    var test = "testmothafucka"
-
-    @IBAction func inputSR(sender: AnyObject?) {
-    
+    func saveServiceRequestNumber() {
+        serviceRequest.srNumber = serviceRequestInput.text!
+        do {
+            try serviceRequest.managedObjectContext!.save()
+        } catch {
+            fatalError()
+        }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        data.srNumber = 55
-        print(data.srNumber)
-
         // Do any additional setup after loading the view.
     }
 
@@ -35,14 +35,16 @@ class SRInputViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        saveServiceRequestNumber()
+        let dest = segue.destinationViewController as! LocationViewController
+        dest.serviceRequest = self.serviceRequest
+        
     }
-    */
-
 }

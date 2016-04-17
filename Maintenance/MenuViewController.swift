@@ -11,27 +11,33 @@ import CoreData
 
 class MenuViewController: UIViewController {
     
-    let moc = DataController().managedObjectContext
     var serviceRequest: ServiceRequest?
+    var moc: NSManagedObjectContext!
     
-    @IBAction func serviceRequest(sender: AnyObject) {
+    func serviceRequestPipe() {
         let serviceRequestFetch = NSFetchRequest(entityName: "ServiceRequest")
-        
         do {
-            let fetchedServiceRequest = try self.moc.executeFetchRequest(serviceRequestFetch) as! [ServiceRequest]
-            if fetchedServiceRequest.count == 0 {
-                serviceRequest = NSEntityDescription.insertNewObjectForEntityForName("ServiceRequest", inManagedObjectContext: self.moc) as! ServiceRequest
-                try moc.save()
+            let toBeDeleted = try self.moc.executeFetchRequest(serviceRequestFetch) as! [ServiceRequest]
+            if toBeDeleted.count > 0 {
+                self.moc.deleteObject(toBeDeleted.first!)
             }
         } catch {
-            fatalError("Failed to fetch Service Request: \(error)")
+            fatalError()
+        }
+        self.serviceRequest = NSEntityDescription.insertNewObjectForEntityForName("ServiceRequest", inManagedObjectContext: moc) as? ServiceRequest
+        do {
+            try self.moc.save()
+            print(self.moc.countForFetchRequest(serviceRequestFetch, error: nil))
+        } catch {
+            fatalError()
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        self.moc = appDelegate.dataController.managedObjectContext
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,10 +49,10 @@ class MenuViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        serviceRequestPipe()
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        segue.destinationViewController
+        let dest = segue.destinationViewController as! ServiceRequestNumberInputViewController
+        dest.serviceRequest = self.serviceRequest
     }
- 
-
 }

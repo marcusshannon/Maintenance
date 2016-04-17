@@ -1,30 +1,19 @@
 //
-//  SRInputViewController.swift
+//  NavigationController.swift
 //  Maintenance
 //
-//  Created by Marcus Shannon on 4/10/16.
+//  Created by Marcus Shannon on 4/16/16.
 //  Copyright © 2016 Metro Self Storage. All rights reserved.
 //
 
 import UIKit
-import CoreData
 
-class SRInputViewController: UIViewController {
-    
-    @IBOutlet weak var serviceRequestInput: UITextField!
-    
-    var moc: NSManagedObjectContext!
-    var data: ServiceRequest!
-    var test = "testmothafucka"
+class NavigationController: UINavigationController {
 
-    @IBAction func inputSR(sender: AnyObject?) {
+    var serviceRequest: ServiceRequest?
     
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        data.srNumber = 55
-        print(data.srNumber)
 
         // Do any additional setup after loading the view.
     }
