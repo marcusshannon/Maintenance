@@ -27,7 +27,6 @@ class MenuViewController: UIViewController {
         self.serviceRequest = NSEntityDescription.insertNewObjectForEntityForName("ServiceRequest", inManagedObjectContext: moc) as? ServiceRequest
         do {
             try self.moc.save()
-            print(self.moc.countForFetchRequest(serviceRequestFetch, error: nil))
         } catch {
             fatalError()
         }

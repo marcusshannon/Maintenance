@@ -48,7 +48,6 @@ class TravelTimeViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         serviceRequest.travelEnd = NSDate()
-        print("doing it right")
         serviceRequest.taskStart = NSDate()
         do {
             try serviceRequest.managedObjectContext!.save()
