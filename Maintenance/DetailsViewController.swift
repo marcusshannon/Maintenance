@@ -10,6 +10,9 @@ import UIKit
 
 class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    let alert = UIAlertView()
+    
+    
     var serviceRequest: ServiceRequest!
     
     @IBOutlet weak var startTime: UILabel!
@@ -35,7 +38,7 @@ class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, 
         let formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
         formatter.timeStyle = .NoStyle
-        formatter.dateFormat = "hh:mm"
+        formatter.dateFormat = "hh:mm a"
         
         startTime.text = "Start time: " + formatter.stringFromDate(serviceRequest.taskStart!)
         // Do any additional setup after loading the view.

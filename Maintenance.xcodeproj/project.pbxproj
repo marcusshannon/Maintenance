@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D24C83491CCEE63800EFD455 /* WorkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C83481CCEE63800EFD455 /* WorkerViewController.swift */; };
 		D29FC60F1CB72FD700DD5BC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29FC60E1CB72FD700DD5BC7 /* AppDelegate.swift */; };
 		D29FC6111CB72FD700DD5BC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29FC6101CB72FD700DD5BC7 /* ViewController.swift */; };
 		D29FC6141CB72FD700DD5BC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D29FC6121CB72FD700DD5BC7 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D24C83481CCEE63800EFD455 /* WorkerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerViewController.swift; sourceTree = "<group>"; };
 		D29FC60B1CB72FD700DD5BC7 /* Maintenance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maintenance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D29FC60E1CB72FD700DD5BC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D29FC6101CB72FD700DD5BC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				D29FC60E1CB72FD700DD5BC7 /* AppDelegate.swift */,
 				D29FC6101CB72FD700DD5BC7 /* ViewController.swift */,
 				D29FC6121CB72FD700DD5BC7 /* Main.storyboard */,
+				D24C83481CCEE63800EFD455 /* WorkerViewController.swift */,
 				D2B9A4431CC434F700A156D2 /* DetailsViewController.swift */,
 				D2B9A4411CC3218B00A156D2 /* NavigationController.swift */,
 				D2B9A43F1CC31F0A00A156D2 /* TravelTimeViewController.swift */,
@@ -306,6 +309,7 @@
 				D2E1799A1CB874EE008F64F2 /* Model.xcdatamodeld in Sources */,
 				D2B9A4381CC2895800A156D2 /* ServiceRequestNumberInputViewController.swift in Sources */,
 				D2E1799D1CB87755008F64F2 /* Worker+CoreDataProperties.swift in Sources */,
+				D24C83491CCEE63800EFD455 /* WorkerViewController.swift in Sources */,
 				D2B9A4441CC434F700A156D2 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,6 +449,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Maintenance/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.akiba.Maintenance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -460,6 +465,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Maintenance/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.akiba.Maintenance;
 				PRODUCT_NAME = "$(TARGET_NAME)";

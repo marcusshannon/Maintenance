@@ -17,7 +17,7 @@ class TravelTimeViewController: UIViewController {
         let formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
         formatter.timeStyle = .NoStyle
-        formatter.dateFormat = "hh:mm"
+        formatter.dateFormat = "hh:mm a"
         do {
             try serviceRequest.managedObjectContext!.save()
         } catch {
