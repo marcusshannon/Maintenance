@@ -37,7 +37,7 @@ class LocationViewController: UIViewController, UIPickerViewDataSource, UIPicker
         // Dispose of any resources that can be recreated.
     }
     
-    let locations = ["Bayer's Lake", "Clifton", "Thornhill", "Joeseph Zatzman", "Almon"]
+    let locations = ["Bayer's Lake", "Clifton", "Thornhill", "Joseph Zatzman", "Almon", "Walker"]
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1

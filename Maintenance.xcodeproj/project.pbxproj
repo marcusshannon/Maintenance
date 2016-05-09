@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D24A1FA21CDF9CB10084DD18 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A1FA11CDF9CB10084DD18 /* Model.swift */; };
 		D24C83491CCEE63800EFD455 /* WorkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C83481CCEE63800EFD455 /* WorkerViewController.swift */; };
 		D29FC60F1CB72FD700DD5BC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29FC60E1CB72FD700DD5BC7 /* AppDelegate.swift */; };
 		D29FC6111CB72FD700DD5BC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29FC6101CB72FD700DD5BC7 /* ViewController.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D24A1FA11CDF9CB10084DD18 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D24C83481CCEE63800EFD455 /* WorkerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerViewController.swift; sourceTree = "<group>"; };
 		D29FC60B1CB72FD700DD5BC7 /* Maintenance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maintenance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D29FC60E1CB72FD700DD5BC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				D29FC60E1CB72FD700DD5BC7 /* AppDelegate.swift */,
+				D24A1FA11CDF9CB10084DD18 /* Model.swift */,
 				D29FC6101CB72FD700DD5BC7 /* ViewController.swift */,
 				D29FC6121CB72FD700DD5BC7 /* Main.storyboard */,
 				D24C83481CCEE63800EFD455 /* WorkerViewController.swift */,
@@ -305,6 +308,7 @@
 				D2B9A43C1CC2F64A00A156D2 /* LocationViewController.swift in Sources */,
 				D29FC6111CB72FD700DD5BC7 /* ViewController.swift in Sources */,
 				D2B9A43E1CC3034500A156D2 /* TravelRequiredViewController.swift in Sources */,
+				D24A1FA21CDF9CB10084DD18 /* Model.swift in Sources */,
 				D29FC60F1CB72FD700DD5BC7 /* AppDelegate.swift in Sources */,
 				D2E1799A1CB874EE008F64F2 /* Model.xcdatamodeld in Sources */,
 				D2B9A4381CC2895800A156D2 /* ServiceRequestNumberInputViewController.swift in Sources */,

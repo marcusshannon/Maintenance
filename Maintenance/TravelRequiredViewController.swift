@@ -37,6 +37,8 @@ class TravelRequiredViewController: UIViewController {
         else {
             let dest = segue.destinationViewController as! DetailsViewController
             dest.serviceRequest = self.serviceRequest
+            serviceRequest.travelStart = NSDate()
+            serviceRequest.travelEnd = NSDate()
             serviceRequest.taskStart = NSDate()
             do {
                 try serviceRequest.managedObjectContext!.save()

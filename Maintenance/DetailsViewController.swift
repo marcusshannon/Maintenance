@@ -10,8 +10,24 @@ import UIKit
 
 class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    let alert = UIAlertView()
     
+    @IBAction func serverDetails(sender: AnyObject) {
+        serviceRequest.taskDescription = descriptionBox.text
+        serviceRequest.taskEnd = NSDate()
+        
+        do {
+            try serviceRequest.managedObjectContext?.save()
+        } catch {
+            
+        }
+        
+        let alert = UIAlertView()
+        alert.title = "Seding to server:"
+        alert.message = "Task Description: \(serviceRequest.taskDescription!) \n SR #: \(serviceRequest.srNumber!) \n Location: \(serviceRequest.location!) \n Task Start: \(serviceRequest.taskStart!) \n Task End: \(serviceRequest.taskEnd!) \n Travel Start: \(serviceRequest.travelStart!) \n Travel End: \(serviceRequest.travelEnd!)"
+        alert.addButtonWithTitle("Ok")
+        alert.show()
+
+    }
     
     var serviceRequest: ServiceRequest!
     
@@ -20,13 +36,15 @@ class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var descriptionBox: UITextView!
     
     @IBAction func photos() {
-        
         let photos = UIImagePickerController()
-        photos.sourceType = .SavedPhotosAlbum
+        photos.sourceType = .Camera
         photos.delegate = self
         
         presentViewController(photos, animated: true, completion: nil)
-        
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+            
     }
     override func viewDidLoad() {
         super.viewDidLoad()
