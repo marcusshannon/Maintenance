@@ -10,11 +10,12 @@ import UIKit
 
 class LocationViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var serviceRequest: ServiceRequest!
+    var model: DataModel!
 
     @IBOutlet weak var locationPicker: UIPickerView!
 
     func saveLocation() {
+        let serviceRequest = self.model.getObject(Entity.ServiceRequest) as! ServiceRequest
         serviceRequest.location = locations[locationPicker.selectedRowInComponent(0)]
         do {
             try serviceRequest.managedObjectContext!.save()
@@ -25,11 +26,14 @@ class LocationViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // Do any additional setup after loading the view.
+
+        if model == nil {
+            self.model = Model()
+        }
         locationPicker.delegate = self
         locationPicker.dataSource = self
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,7 +65,7 @@ class LocationViewController: UIViewController, UIPickerViewDataSource, UIPicker
         // Pass the selected object to the new view controller.
         saveLocation()
         let dest = segue.destinationViewController as! TravelRequiredViewController
-        dest.serviceRequest = self.serviceRequest
+        dest.model = self.model
     }
     
 

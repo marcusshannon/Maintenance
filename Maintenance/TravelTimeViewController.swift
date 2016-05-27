@@ -10,7 +10,7 @@ import UIKit
 
 class TravelTimeViewController: UIViewController {
 
-    var serviceRequest: ServiceRequest!
+    var model: DataModel!
 
     @IBAction func startTravelTime() {
         serviceRequest.travelStart = NSDate()
@@ -32,6 +32,9 @@ class TravelTimeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if model == nil {
+            self.model = Model()
+        }
     }
 
     override func didReceiveMemoryWarning() {

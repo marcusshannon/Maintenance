@@ -10,7 +10,7 @@ import UIKit
 
 class TravelRequiredViewController: UIViewController {
     
-    var serviceRequest: ServiceRequest!
+    var model: DataModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +22,6 @@ class TravelRequiredViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -32,20 +30,16 @@ class TravelRequiredViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if (segue.identifier != nil) {
             let dest = segue.destinationViewController as! TravelTimeViewController
-            dest.serviceRequest = self.serviceRequest
+            dest.model = self.model
         }
         else {
             let dest = segue.destinationViewController as! DetailsViewController
-            dest.serviceRequest = self.serviceRequest
+            dest.model = self.model
+            let serviceRequest = self.model.getObject(Entity.ServiceRequest) as! ServiceRequest
             serviceRequest.travelStart = NSDate()
             serviceRequest.travelEnd = NSDate()
             serviceRequest.taskStart = NSDate()
-            do {
-                try serviceRequest.managedObjectContext!.save()
-            } catch {
-                fatalError()
-            }
-
+            self.model.save()
         }
     }
 }

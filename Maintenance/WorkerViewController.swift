@@ -10,7 +10,7 @@ import UIKit
 
 class WorkerViewController: UIViewController {
 
-    var worker: Worker!
+    var model: DataModel!
     
     @IBOutlet weak var firstNameInput: UITextField!
     
@@ -18,7 +18,9 @@ class WorkerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if model == nil {
+            self.model = Model()
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -27,7 +29,6 @@ class WorkerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     
     // MARK: - Navigation
 
@@ -35,14 +36,10 @@ class WorkerViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let worker = self.model.getObject(Entity.Worker) as! Worker
         worker.firstName = self.firstNameInput.text
         worker.lastName = self.lastNameInput.text
-        do {
-            try self.worker.managedObjectContext!.save()
-        }
-        catch {
-            fatalError()
-        }
+        self.model.save()
     }
     
 

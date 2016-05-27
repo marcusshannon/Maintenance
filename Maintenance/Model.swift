@@ -9,8 +9,24 @@
 import UIKit
 import CoreData
 
+enum Entity: String {
+    case Worker = "Worker"
+    case ServiceRequest = "ServiceRequest"
+}
+
 protocol DataModel {
-    func serviceRequestCount() -> Int
+    
+    func countEntity(entity: Entity) -> Int
+    
+    func newEntity(entity: Entity)
+    
+    func save()
+    
+    func fetchEntity(entity: Entity) -> [NSManagedObject]
+    
+    func deleteEntity(entity: Entity)
+    
+    func getObject(entity: Entity) -> NSManagedObject
 }
 
 class Model: DataModel {
@@ -22,27 +38,39 @@ class Model: DataModel {
         self.moc = appDelegate.dataController.managedObjectContext
     }
     
-    func serviceRequestCount() -> Int {
-        return self.moc.countForFetchRequest(NSFetchRequest(entityName: "ServiceRequest"), error: nil)
+    func countEntity(entity: Entity) -> Int {
+        return self.moc.countForFetchRequest(NSFetchRequest(entityName: entity.rawValue), error: nil)
     }
     
-    func addServiceRequest() {
-        NSEntityDescription.insertNewObjectForEntityForName("ServiceRequest", inManagedObjectContext: moc)
+    func newEntity(entity: Entity) {
+        NSEntityDescription.insertNewObjectForEntityForName(entity.rawValue, inManagedObjectContext: self.moc)
         self.save()
     }
     
-    func deleteServiceRequest() {
-        let serviceRequestFetchRequest = NSFetchRequest(entityName: "ServiceRequest")
+    func fetchEntity(entity: Entity) -> [NSManagedObject] {
+        let fetchRequest = NSFetchRequest(entityName: entity.rawValue)
         do {
-            let fetchedServiceRequests = try self.moc.executeFetchRequest(serviceRequestFetchRequest)
-            for serviceRequest in fetchedServiceRequests {
-                self.moc.deleteObject(serviceRequest as! NSManagedObject)
-            }
+            let fetched = try self.moc.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+            return fetched
         } catch {
-            
+            fatalError()
+        }
+    }
+    
+    func deleteEntity(entity: Entity) {
+        for object in self.fetchEntity(entity) {
+            self.moc.deleteObject(object)
         }
         self.save()
     }
+    
+    func getObject(entity: Entity) -> NSManagedObject {
+        if self.countEntity(entity) > 0 {
+            return self.fetchEntity(entity)[0]
+        }
+        return NSManagedObject()
+    }
+    
     
     func save() {
         do {
@@ -51,16 +79,5 @@ class Model: DataModel {
         catch {
             
         }
-    }
-    
-    func getServiceRequest() -> ServiceRequest? {
-        let serviceRequestFetchRequest = NSFetchRequest(entityName: "ServiceRequest")
-        do {
-            let fetchedServiceRequests = try self.moc.executeFetchRequest(serviceRequestFetchRequest) as! [ServiceRequest]
-            return fetchedServiceRequests[0]
-        } catch {
-            
-        }
-        return nil
     }
 }

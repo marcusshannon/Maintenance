@@ -11,32 +11,19 @@ import CoreData
 
 class MenuViewController: UIViewController {
     
-    var serviceRequest: ServiceRequest?
-    var moc: NSManagedObjectContext!
-    
-    func serviceRequestPipe() {
-        let serviceRequestFetch = NSFetchRequest(entityName: "ServiceRequest")
-        do {
-            let toBeDeleted = try self.moc.executeFetchRequest(serviceRequestFetch) as! [ServiceRequest]
-            if toBeDeleted.count > 0 {
-                self.moc.deleteObject(toBeDeleted.first!)
-            }
-        } catch {
-            fatalError()
-        }
-        self.serviceRequest = NSEntityDescription.insertNewObjectForEntityForName("ServiceRequest", inManagedObjectContext: moc) as? ServiceRequest
-        do {
-            try self.moc.save()
-        } catch {
-            fatalError()
-        }
-    }
+    var model: DataModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        self.moc = appDelegate.dataController.managedObjectContext
+        if model == nil {
+            self.model = Model()
+        }
+        if self.model.countEntity(Entity.ServiceRequest) > 0 {
+            self.model.deleteEntity(Entity.ServiceRequest)
+        }
+        self.model.newEntity(Entity.ServiceRequest)
+        self.model.save()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,10 +35,9 @@ class MenuViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        serviceRequestPipe()
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         let dest = segue.destinationViewController as! ServiceRequestNumberInputViewController
-        dest.serviceRequest = self.serviceRequest
+        dest.model = self.model
     }
 }

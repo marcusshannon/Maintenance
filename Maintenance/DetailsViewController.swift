@@ -8,9 +8,10 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     
-    
+    var model: DataModel!
+
     @IBAction func serverDetails(sender: AnyObject) {
         serviceRequest.taskDescription = descriptionBox.text
         serviceRequest.taskEnd = NSDate()
@@ -29,23 +30,11 @@ class DetailsViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     }
     
-    var serviceRequest: ServiceRequest!
     
     @IBOutlet weak var startTime: UILabel!
     
     @IBOutlet weak var descriptionBox: UITextView!
     
-    @IBAction func photos() {
-        let photos = UIImagePickerController()
-        photos.sourceType = .Camera
-        photos.delegate = self
-        
-        presentViewController(photos, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-            
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

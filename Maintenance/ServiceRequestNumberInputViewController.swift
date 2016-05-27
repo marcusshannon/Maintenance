@@ -11,22 +11,22 @@ import CoreData
 
 class ServiceRequestNumberInputViewController: UIViewController {
     
-    var serviceRequest: ServiceRequest!
+    var model: DataModel!
     
     @IBOutlet weak var serviceRequestInput: UITextField!
     
     func saveServiceRequestNumber() {
+        let serviceRequest = self.model.getObject(Entity.ServiceRequest) as! ServiceRequest
         serviceRequest.srNumber = serviceRequestInput.text!
-        do {
-            try serviceRequest.managedObjectContext!.save()
-        } catch {
-            fatalError()
-        }
+        self.model.save()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        if model == nil {
+            self.model = Model()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,7 +44,7 @@ class ServiceRequestNumberInputViewController: UIViewController {
         // Pass the selected object to the new view controller.
         saveServiceRequestNumber()
         let dest = segue.destinationViewController as! LocationViewController
-        dest.serviceRequest = self.serviceRequest
+        dest.model = self.model
         
     }
 }
