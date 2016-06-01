@@ -13,27 +13,12 @@ class LocationViewController: UIViewController, UIPickerViewDataSource, UIPicker
     var model: DataModel!
 
     @IBOutlet weak var locationPicker: UIPickerView!
-
-    func saveLocation() {
-        let serviceRequest = self.model.getObject(Entity.ServiceRequest) as! ServiceRequest
-        serviceRequest.location = locations[locationPicker.selectedRowInComponent(0)]
-        do {
-            try serviceRequest.managedObjectContext!.save()
-        } catch {
-            fatalError()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
-        if model == nil {
-            self.model = Model()
-        }
         locationPicker.delegate = self
         locationPicker.dataSource = self
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,7 +48,9 @@ class LocationViewController: UIViewController, UIPickerViewDataSource, UIPicker
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        saveLocation()
+        self.model.serviceRequest.location = locations[locationPicker.selectedRowInComponent(0)]
+        //self.model.currentStage.currentStage = Stage.Location.rawValue
+        self.model.save()
         let dest = segue.destinationViewController as! TravelRequiredViewController
         dest.model = self.model
     }

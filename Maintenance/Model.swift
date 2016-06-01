@@ -10,15 +10,18 @@ import UIKit
 import CoreData
 
 enum Entity: String {
-    case Worker = "Worker"
-    case ServiceRequest = "ServiceRequest"
+    case Worker, ServiceRequest, CurrentStage
+}
+
+enum Stage: String {
+    case Worker, Menu, ServiceRequestNumber, Location, Travel, StartTravel, StartTask
 }
 
 protocol DataModel {
     
     func countEntity(entity: Entity) -> Int
     
-    func newEntity(entity: Entity)
+    func insertNewEntity(entity: Entity) -> NSManagedObject
     
     func save()
     
@@ -26,31 +29,56 @@ protocol DataModel {
     
     func deleteEntity(entity: Entity)
     
-    func getObject(entity: Entity) -> NSManagedObject
+    var serviceRequest: ServiceRequest! { get }
+    
+    var worker: Worker! { get }
+    
+    var currentStage: CurrentStage! { get }
+    
 }
 
 class Model: DataModel {
     
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var moc: NSManagedObjectContext!
+    var serviceRequest: ServiceRequest!
+    var worker: Worker!
+    var currentStage: CurrentStage!
     
     init() {
         self.moc = appDelegate.dataController.managedObjectContext
+        if self.countEntity(Entity.ServiceRequest) == 0 {
+            self.serviceRequest = self.insertNewEntity(Entity.ServiceRequest) as! ServiceRequest
+        }
+        else {
+            self.serviceRequest = self.fetchEntity(Entity.ServiceRequest)[0] as! ServiceRequest
+        }
+        if self.countEntity(Entity.Worker) == 0 {
+            self.worker = self.insertNewEntity(Entity.Worker) as! Worker
+        }
+        else {
+            self.worker = self.fetchEntity(Entity.Worker)[0] as! Worker
+        }
+//        if self.countEntity(Entity.CurrentStage) == 0 {
+//            self.currentStage = self.insertNewEntity(Entity.CurrentStage) as! CurrentStage
+//        }
+//        else {
+//            self.currentStage = self.fetchEntity(Entity.CurrentStage)[0] as! CurrentStage
+//        }
+//        self.currentStage.currentStage = Stage.Worker.rawValue
     }
     
     func countEntity(entity: Entity) -> Int {
         return self.moc.countForFetchRequest(NSFetchRequest(entityName: entity.rawValue), error: nil)
     }
     
-    func newEntity(entity: Entity) {
-        NSEntityDescription.insertNewObjectForEntityForName(entity.rawValue, inManagedObjectContext: self.moc)
-        self.save()
+    func insertNewEntity(entity: Entity) -> NSManagedObject {
+        return NSEntityDescription.insertNewObjectForEntityForName(entity.rawValue, inManagedObjectContext: self.moc)
     }
     
     func fetchEntity(entity: Entity) -> [NSManagedObject] {
-        let fetchRequest = NSFetchRequest(entityName: entity.rawValue)
         do {
-            let fetched = try self.moc.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+            let fetched = try self.moc.executeFetchRequest(NSFetchRequest(entityName: entity.rawValue)) as! [NSManagedObject]
             return fetched
         } catch {
             fatalError()
@@ -61,23 +89,13 @@ class Model: DataModel {
         for object in self.fetchEntity(entity) {
             self.moc.deleteObject(object)
         }
-        self.save()
     }
-    
-    func getObject(entity: Entity) -> NSManagedObject {
-        if self.countEntity(entity) > 0 {
-            return self.fetchEntity(entity)[0]
-        }
-        return NSManagedObject()
-    }
-    
     
     func save() {
         do {
             try self.moc.save()
         }
         catch {
-            
         }
     }
 }

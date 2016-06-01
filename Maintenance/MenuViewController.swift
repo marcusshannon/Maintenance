@@ -16,14 +16,6 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        if model == nil {
-            self.model = Model()
-        }
-        if self.model.countEntity(Entity.ServiceRequest) > 0 {
-            self.model.deleteEntity(Entity.ServiceRequest)
-        }
-        self.model.newEntity(Entity.ServiceRequest)
-        self.model.save()
     }
 
     override func didReceiveMemoryWarning() {

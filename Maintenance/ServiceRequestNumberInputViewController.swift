@@ -13,20 +13,19 @@ class ServiceRequestNumberInputViewController: UIViewController {
     
     var model: DataModel!
     
+    @IBOutlet weak var nextButton: UIButton!
+    
     @IBOutlet weak var serviceRequestInput: UITextField!
     
-    func saveServiceRequestNumber() {
-        let serviceRequest = self.model.getObject(Entity.ServiceRequest) as! ServiceRequest
-        serviceRequest.srNumber = serviceRequestInput.text!
-        self.model.save()
+    @IBAction func serviceRequestNumberChanged(sender: UITextField) {
+        if sender.text != nil {
+            self.nextButton.enabled = true
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        if model == nil {
-            self.model = Model()
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,9 +41,9 @@ class ServiceRequestNumberInputViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        saveServiceRequestNumber()
+        self.model.serviceRequest.srNumber = serviceRequestInput.text!
+        self.model.save()
         let dest = segue.destinationViewController as! LocationViewController
         dest.model = self.model
-        
     }
 }

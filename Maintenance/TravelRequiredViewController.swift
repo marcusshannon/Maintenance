@@ -28,18 +28,19 @@ class TravelRequiredViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if (segue.identifier != nil) {
+        if (segue.identifier == "travelRequired") {
             let dest = segue.destinationViewController as! TravelTimeViewController
             dest.model = self.model
         }
         else {
+            let currentTime = NSDate()
+            self.model.serviceRequest.travelStart = currentTime
+            self.model.serviceRequest.travelEnd = currentTime
+            self.model.serviceRequest.taskStart = currentTime
+            //self.model.currentStage.currentStage = Stage.StartTask.rawValue
+            self.model.save()
             let dest = segue.destinationViewController as! DetailsViewController
             dest.model = self.model
-            let serviceRequest = self.model.getObject(Entity.ServiceRequest) as! ServiceRequest
-            serviceRequest.travelStart = NSDate()
-            serviceRequest.travelEnd = NSDate()
-            serviceRequest.taskStart = NSDate()
-            self.model.save()
         }
     }
 }

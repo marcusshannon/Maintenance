@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         dataController = DataController()
         return true
-        
     }
 
     func applicationWillResignActive(application: UIApplication) {

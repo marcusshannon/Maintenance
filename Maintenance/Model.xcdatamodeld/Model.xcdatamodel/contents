@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
+    <entity name="CurrentStage" representedClassName=".CurrentStage" syncable="YES">
+        <attribute name="currentStage" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="ServiceRequest" representedClassName="ServiceRequest" syncable="YES">
         <attribute name="inProgress" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,7 +18,8 @@
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ServiceRequest" positionX="-54" positionY="9" width="128" height="165"/>
-        <element name="Worker" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="ServiceRequest" positionX="-245" positionY="-9" width="128" height="165"/>
+        <element name="Worker" positionX="-108" positionY="-153" width="128" height="73"/>
+        <element name="CurrentStage" positionX="-45" positionY="63" width="128" height="58"/>
     </elements>
 </model>

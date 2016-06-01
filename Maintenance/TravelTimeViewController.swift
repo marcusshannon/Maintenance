@@ -13,19 +13,19 @@ class TravelTimeViewController: UIViewController {
     var model: DataModel!
 
     @IBAction func startTravelTime() {
-        serviceRequest.travelStart = NSDate()
+        let currentTime = NSDate()
+        self.model.serviceRequest.travelStart = currentTime
+        self.model.save()
         let formatter = NSDateFormatter()
         formatter.dateStyle = .MediumStyle
         formatter.timeStyle = .NoStyle
         formatter.dateFormat = "hh:mm a"
-        do {
-            try serviceRequest.managedObjectContext!.save()
-        } catch {
-            fatalError()
-        }
-        travelTimeLabel.text = formatter.stringFromDate(serviceRequest.travelStart!)
+        travelTimeLabel.text = formatter.stringFromDate(currentTime)
+        nextButton.enabled = true
     }
 
+    @IBOutlet weak var nextButton: UIButton!
+    
     @IBOutlet weak var travelTimeLabel: UILabel!
     
     override func viewDidLoad() {
@@ -50,16 +50,11 @@ class TravelTimeViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        serviceRequest.travelEnd = NSDate()
-        serviceRequest.taskStart = NSDate()
-        do {
-            try serviceRequest.managedObjectContext!.save()
-        } catch {
-            fatalError()
-        }
+        self.model.serviceRequest.travelEnd = NSDate()
+        self.model.serviceRequest.taskStart = NSDate()
+        //self.model.currentStage.currentStage = Stage.StartTask.rawValue
+        self.model.save()
         let dest = segue.destinationViewController as! DetailsViewController
-        dest.serviceRequest = self.serviceRequest
+        dest.model = self.model
     }
-    
-
 }

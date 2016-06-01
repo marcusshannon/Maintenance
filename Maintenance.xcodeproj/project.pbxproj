@@ -21,6 +21,8 @@
 		D2B9A4401CC31F0A00A156D2 /* TravelTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A43F1CC31F0A00A156D2 /* TravelTimeViewController.swift */; };
 		D2B9A4421CC3218B00A156D2 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A4411CC3218B00A156D2 /* NavigationController.swift */; };
 		D2B9A4441CC434F700A156D2 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A4431CC434F700A156D2 /* DetailsViewController.swift */; };
+		D2C2B0841CFD014B0063BE56 /* CurrentStage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2B0821CFD014B0063BE56 /* CurrentStage+CoreDataProperties.swift */; };
+		D2C2B0851CFD014B0063BE56 /* CurrentStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2B0831CFD014B0063BE56 /* CurrentStage.swift */; };
 		D2E1799A1CB874EE008F64F2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D2E179981CB874EE008F64F2 /* Model.xcdatamodeld */; };
 		D2E1799D1CB87755008F64F2 /* Worker+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E1799B1CB87755008F64F2 /* Worker+CoreDataProperties.swift */; };
 		D2E1799E1CB87755008F64F2 /* Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E1799C1CB87755008F64F2 /* Worker.swift */; };
@@ -68,6 +70,8 @@
 		D2B9A43F1CC31F0A00A156D2 /* TravelTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelTimeViewController.swift; sourceTree = "<group>"; };
 		D2B9A4411CC3218B00A156D2 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		D2B9A4431CC434F700A156D2 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		D2C2B0821CFD014B0063BE56 /* CurrentStage+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CurrentStage+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D2C2B0831CFD014B0063BE56 /* CurrentStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentStage.swift; sourceTree = "<group>"; };
 		D2E179991CB874EE008F64F2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		D2E1799B1CB87755008F64F2 /* Worker+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Worker+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D2E1799C1CB87755008F64F2 /* Worker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Worker.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 		D29FC6021CB72FD700DD5BC7 = {
 			isa = PBXGroup;
 			children = (
+				D2C2B0821CFD014B0063BE56 /* CurrentStage+CoreDataProperties.swift */,
+				D2C2B0831CFD014B0063BE56 /* CurrentStage.swift */,
 				D2E179A11CB9B0DD008F64F2 /* ServiceRequest+CoreDataProperties.swift */,
 				D2E179A21CB9B0DD008F64F2 /* ServiceRequest.swift */,
 				D2E1799B1CB87755008F64F2 /* Worker+CoreDataProperties.swift */,
@@ -306,6 +312,8 @@
 				D2B9A4421CC3218B00A156D2 /* NavigationController.swift in Sources */,
 				D2E179A01CB8779D008F64F2 /* DataController.swift in Sources */,
 				D2B9A43C1CC2F64A00A156D2 /* LocationViewController.swift in Sources */,
+				D2C2B0841CFD014B0063BE56 /* CurrentStage+CoreDataProperties.swift in Sources */,
+				D2C2B0851CFD014B0063BE56 /* CurrentStage.swift in Sources */,
 				D29FC6111CB72FD700DD5BC7 /* ViewController.swift in Sources */,
 				D2B9A43E1CC3034500A156D2 /* TravelRequiredViewController.swift in Sources */,
 				D24A1FA21CDF9CB10084DD18 /* Model.swift in Sources */,

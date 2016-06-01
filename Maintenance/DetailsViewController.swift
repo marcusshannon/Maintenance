@@ -13,21 +13,18 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     var model: DataModel!
 
     @IBAction func serverDetails(sender: AnyObject) {
+        let serviceRequest = self.model.serviceRequest
+        let worker = self.model.worker
         serviceRequest.taskDescription = descriptionBox.text
         serviceRequest.taskEnd = NSDate()
+        self.model.save()
         
-        do {
-            try serviceRequest.managedObjectContext?.save()
-        } catch {
-            
-        }
         
         let alert = UIAlertView()
         alert.title = "Seding to server:"
-        alert.message = "Task Description: \(serviceRequest.taskDescription!) \n SR #: \(serviceRequest.srNumber!) \n Location: \(serviceRequest.location!) \n Task Start: \(serviceRequest.taskStart!) \n Task End: \(serviceRequest.taskEnd!) \n Travel Start: \(serviceRequest.travelStart!) \n Travel End: \(serviceRequest.travelEnd!)"
+        alert.message = "Task Description: \(serviceRequest.taskDescription!) \n SR #: \(serviceRequest.srNumber!) \n Location: \(serviceRequest.location!) \n Task Start: \(serviceRequest.taskStart!) \n Task End: \(serviceRequest.taskEnd!) \n Travel Start: \(serviceRequest.travelStart!) \n Travel End: \(serviceRequest.travelEnd!)\n Worker: \(worker.firstName!) \(worker.lastName!)"
         alert.addButtonWithTitle("Ok")
         alert.show()
-
     }
     
     
@@ -47,6 +44,8 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         formatter.timeStyle = .NoStyle
         formatter.dateFormat = "hh:mm a"
         
+        let serviceRequest = self.model.serviceRequest
+        
         startTime.text = "Start time: " + formatter.stringFromDate(serviceRequest.taskStart!)
         // Do any additional setup after loading the view.
     }
@@ -54,6 +53,37 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func post() {
+        let serviceRequest = self.model.serviceRequest
+        let worker = self.model.worker
+        
+        let data = NSDictionary()
+        data.setValue(worker.lastName!, forKey: "lastName")
+        data.setValue(worker.firstName!, forKey: "firstName")
+        data.setValue(serviceRequest.srNumber!, forKey: "serviceRequestNumber")
+        data.setValue(serviceRequest.location!, forKey: "location")
+        data.setValue(serviceRequest.taskDescription!, forKey: "description")
+        data.setValue(serviceRequest.travelStart, forKey: "travelStart")
+        data.setValue(serviceRequest.travelEnd, forKey: "travelEnd")
+        data.setValue(serviceRequest.taskStart, forKey: "taskStart")
+        data.setValue(serviceRequest.taskEnd, forKey: "taskEnd")
+        data.setValue(serviceRequest.inProgress, forKey: "inProgress")
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://localhost:3000")!)
+        request.HTTPMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions(rawValue: 0))
+        }
+        catch {
+            fatalError()
+        }
+        
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request)
+        task.resume()
     }
     
 
