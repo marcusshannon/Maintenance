@@ -11,7 +11,7 @@
 		D24C83491CCEE63800EFD455 /* WorkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C83481CCEE63800EFD455 /* WorkerViewController.swift */; };
 		D29FC60F1CB72FD700DD5BC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29FC60E1CB72FD700DD5BC7 /* AppDelegate.swift */; };
 		D29FC6111CB72FD700DD5BC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29FC6101CB72FD700DD5BC7 /* ViewController.swift */; };
-		D29FC6141CB72FD700DD5BC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D29FC6121CB72FD700DD5BC7 /* Main.storyboard */; };
+		D29FC6141CB72FD700DD5BC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D29FC6121CB72FD700DD5BC7 /* Main.storyboard */; settings = {ASSET_TAGS = ("First Name", ); }; };
 		D29FC6161CB72FD700DD5BC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D29FC6151CB72FD700DD5BC7 /* Assets.xcassets */; };
 		D29FC6241CB72FD700DD5BC7 /* MaintenanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29FC6231CB72FD700DD5BC7 /* MaintenanceTests.swift */; };
 		D29FC62F1CB72FD700DD5BC7 /* MaintenanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29FC62E1CB72FD700DD5BC7 /* MaintenanceUITests.swift */; };
@@ -235,6 +235,9 @@
 		D29FC6031CB72FD700DD5BC7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					"First Name",
+				);
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Metro Self Storage";

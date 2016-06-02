@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WorkerViewController: UIViewController {
+class WorkerViewController: UIViewController, UITextFieldDelegate {
 
     var model: DataModel!
     
@@ -21,27 +21,44 @@ class WorkerViewController: UIViewController {
     
     @IBOutlet weak var saveButton: UIButton!
     
-    @IBAction func firstNameChanged(sender: UITextField) {
-        if sender.text != nil {
-            firstNameSet = true
+
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if textField === firstNameInput {
+            print(string.characters.count)
+            if string.characters.count > 0 {
+                firstNameSet = true
+            }
+            else {
+                firstNameSet = false
+            }
+        }
+        if textField === lastNameInput {
+            print(string.characters.count)
+            if string.characters.count > 0 {
+                lastNameSet = true
+            }
+            else {
+                lastNameSet = false
+            }
         }
         if firstNameSet && lastNameSet {
             saveButton.enabled = true
+            saveButton.backgroundColor = UIColor(red: 248/255, green: 147/255, blue: 31/255, alpha: 1.0)
         }
+        else {
+            saveButton.enabled = false
+            saveButton.backgroundColor = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1.0)
+        }
+        return true
     }
 
-    @IBAction func lastNameChanged(sender: UITextField) {
-        if sender.text != nil {
-            lastNameSet = true
-        }
-        if firstNameSet && lastNameSet {
-            saveButton.enabled = true
-        }
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         saveButton.enabled = false
+        firstNameInput.delegate = self
+        lastNameInput.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,7 +74,6 @@ class WorkerViewController: UIViewController {
         // Pass the selected object to the new view controller.
         self.model.worker.firstName = firstNameInput.text!
         self.model.worker.lastName = lastNameInput.text!
-        //self.model.currentStage.currentStage = Stage.Menu.rawValue
         self.model.save()
         let dest = segue.destinationViewController as! MenuViewController
         dest.model = self.model
