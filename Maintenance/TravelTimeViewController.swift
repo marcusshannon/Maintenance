@@ -20,21 +20,19 @@ class TravelTimeViewController: UIViewController {
         formatter.dateStyle = .MediumStyle
         formatter.timeStyle = .NoStyle
         formatter.dateFormat = "hh:mm a"
-        travelTimeLabel.text = formatter.stringFromDate(currentTime)
+        startButton.enabled = false
+        startButton.setTitle(formatter.stringFromDate(currentTime), forState: UIControlState.Disabled)
         nextButton.enabled = true
     }
 
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var startButton: UIButton!
     
-    @IBOutlet weak var travelTimeLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-        if model == nil {
-            self.model = Model()
-        }
+        nextButton.enabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,9 +48,9 @@ class TravelTimeViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        self.model.serviceRequest.travelEnd = NSDate()
-        self.model.serviceRequest.taskStart = NSDate()
-        //self.model.currentStage.currentStage = Stage.StartTask.rawValue
+        let currentDate = NSDate()
+        self.model.serviceRequest.travelEnd = currentDate
+        self.model.serviceRequest.taskStart = currentDate
         self.model.save()
         let dest = segue.destinationViewController as! DetailsViewController
         dest.model = self.model

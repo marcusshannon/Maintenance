@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ServiceRequestNumberInputViewController: UIViewController {
+class ServiceRequestNumberInputViewController: UIViewController, UITextFieldDelegate {
     
     var model: DataModel!
     
@@ -17,20 +17,29 @@ class ServiceRequestNumberInputViewController: UIViewController {
     
     @IBOutlet weak var serviceRequestInput: UITextField!
     
-    @IBAction func serviceRequestNumberChanged(sender: UITextField) {
-        if sender.text != nil {
-            self.nextButton.enabled = true
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        nextButton.enabled = false
+        serviceRequestInput.delegate = self
+        nextButton.layer.cornerRadius = 5.0
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if textField.text!.characters.count + string.characters.count - range.length > 0 {
+            nextButton.enabled = true
+            nextButton.backgroundColor = UIColor(red: 248/255, green: 147/255, blue: 31/255, alpha: 1.0)
+        }
+        else {
+            nextButton.enabled = false
+            nextButton.backgroundColor = UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1.0)
+        }
+        return true
     }
     
 

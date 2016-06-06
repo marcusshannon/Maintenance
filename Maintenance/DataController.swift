@@ -1,5 +1,6 @@
 import UIKit
 import CoreData
+
 class DataController: NSObject {
     var managedObjectContext: NSManagedObjectContext
     override init() {
@@ -14,7 +15,7 @@ class DataController: NSObject {
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = psc
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+        //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
             let docURL = urls[urls.endIndex-1]
             /* The directory the application uses to store the Core Data store file.
@@ -26,6 +27,6 @@ class DataController: NSObject {
             } catch {
                 fatalError("Error migrating store: \(error)")
             }
-        }
+        //}
     }
 }

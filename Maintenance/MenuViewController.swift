@@ -29,7 +29,14 @@ class MenuViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        let dest = segue.destinationViewController as! ServiceRequestNumberInputViewController
-        dest.model = self.model
+        
+        if segue.identifier! == "Service Request" {
+            let dest = segue.destinationViewController as! ServiceRequestNumberInputViewController
+            dest.model = self.model
+        }
+        if segue.identifier == "Break" {
+            let dest = segue.destinationViewController as! BreakViewController
+            dest.model = self.model
+        }
     }
 }

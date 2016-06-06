@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D20DD3E31D031C300097D55A /* BreakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20DD3E21D031C300097D55A /* BreakViewController.swift */; };
 		D24A1FA21CDF9CB10084DD18 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A1FA11CDF9CB10084DD18 /* Model.swift */; };
 		D24C83491CCEE63800EFD455 /* WorkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C83481CCEE63800EFD455 /* WorkerViewController.swift */; };
 		D29FC60F1CB72FD700DD5BC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29FC60E1CB72FD700DD5BC7 /* AppDelegate.swift */; };
 		D29FC6111CB72FD700DD5BC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29FC6101CB72FD700DD5BC7 /* ViewController.swift */; };
-		D29FC6141CB72FD700DD5BC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D29FC6121CB72FD700DD5BC7 /* Main.storyboard */; settings = {ASSET_TAGS = ("First Name", ); }; };
+		D29FC6141CB72FD700DD5BC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D29FC6121CB72FD700DD5BC7 /* Main.storyboard */; };
 		D29FC6161CB72FD700DD5BC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D29FC6151CB72FD700DD5BC7 /* Assets.xcassets */; };
 		D29FC6241CB72FD700DD5BC7 /* MaintenanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29FC6231CB72FD700DD5BC7 /* MaintenanceTests.swift */; };
 		D29FC62F1CB72FD700DD5BC7 /* MaintenanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29FC62E1CB72FD700DD5BC7 /* MaintenanceUITests.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D20DD3E21D031C300097D55A /* BreakViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakViewController.swift; sourceTree = "<group>"; };
 		D24A1FA11CDF9CB10084DD18 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D24C83481CCEE63800EFD455 /* WorkerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerViewController.swift; sourceTree = "<group>"; };
 		D29FC60B1CB72FD700DD5BC7 /* Maintenance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maintenance.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +141,7 @@
 				D24A1FA11CDF9CB10084DD18 /* Model.swift */,
 				D29FC6101CB72FD700DD5BC7 /* ViewController.swift */,
 				D29FC6121CB72FD700DD5BC7 /* Main.storyboard */,
+				D20DD3E21D031C300097D55A /* BreakViewController.swift */,
 				D24C83481CCEE63800EFD455 /* WorkerViewController.swift */,
 				D2B9A4431CC434F700A156D2 /* DetailsViewController.swift */,
 				D2B9A4411CC3218B00A156D2 /* NavigationController.swift */,
@@ -323,6 +326,7 @@
 				D29FC60F1CB72FD700DD5BC7 /* AppDelegate.swift in Sources */,
 				D2E1799A1CB874EE008F64F2 /* Model.xcdatamodeld in Sources */,
 				D2B9A4381CC2895800A156D2 /* ServiceRequestNumberInputViewController.swift in Sources */,
+				D20DD3E31D031C300097D55A /* BreakViewController.swift in Sources */,
 				D2E1799D1CB87755008F64F2 /* Worker+CoreDataProperties.swift in Sources */,
 				D24C83491CCEE63800EFD455 /* WorkerViewController.swift in Sources */,
 				D2B9A4441CC434F700A156D2 /* DetailsViewController.swift in Sources */,

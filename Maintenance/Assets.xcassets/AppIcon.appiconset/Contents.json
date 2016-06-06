@@ -26,8 +26,9 @@
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "logo125-1400693345479622.png",
       "scale" : "2x"
     },
     {

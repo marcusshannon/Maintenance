@@ -1,72 +1,43 @@
 //
-//  DetailsViewController.swift
+//  BreakViewController.swift
 //  Maintenance
 //
-//  Created by Marcus Shannon on 4/17/16.
+//  Created by Marcus Shannon on 6/4/16.
 //  Copyright © 2016 Metro Self Storage. All rights reserved.
 //
 
 import UIKit
 
-class DetailsViewController: UIViewController, UINavigationControllerDelegate {
-    
+class BreakViewController: UIViewController {
+
     var model: DataModel!
     
-    @IBAction func serverDetails(sender: AnyObject) {
-        //        let serviceRequest = self.model.serviceRequest
-        //        let worker = self.model.worker
-        //        serviceRequest.taskDescription = descriptionBox.text
-        //        serviceRequest.taskEnd = NSDate()
-        //        self.model.save()
-        //
-        //
-        //        let alert = UIAlertView()
-        //        alert.title = "Seding to server:"
-        //        alert.message = "Task Description: \(serviceRequest.taskDescription!) \n SR #: \(serviceRequest.srNumber!) \n Location: \(serviceRequest.location!) \n Task Start: \(serviceRequest.taskStart!) \n Task End: \(serviceRequest.taskEnd!) \n Travel Start: \(serviceRequest.travelStart!) \n Travel End: \(serviceRequest.travelEnd!)\n Worker: \(worker.firstName!) \(worker.lastName!)"
-        //        alert.addButtonWithTitle("Ok")
-        //        alert.show()
-    }
+    @IBOutlet weak var startButton: UIButton!
     
+    @IBOutlet weak var endButton: UIButton!
     
-    @IBOutlet weak var startTime: UILabel!
-    
-    @IBOutlet weak var descriptionBox: UITextView!
-    
-    @IBAction func workInProgress(sender: AnyObject) {
-        self.model.serviceRequest.taskDescription = descriptionBox.text
-        self.model.serviceRequest.taskEnd = NSDate()
-        self.model.serviceRequest.inProgress = true
+    @IBAction func startBreak(sender: AnyObject) {
+        let currentTime = NSDate()
+        self.model.serviceRequest.travelStart = currentTime
+        self.model.serviceRequest.travelEnd = currentTime
+        self.model.serviceRequest.taskStart = currentTime
         self.model.save()
-        self.post()
+        startButton.enabled = false
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "hh:mm a"
+        startButton.setTitle(formatter.stringFromDate(currentTime), forState: UIControlState.Disabled)
+        endButton.enabled = true
+        endButton.backgroundColor = UIColor(red: 248/255, green: 147/255, blue: 31/255, alpha: 1.0)
+
     }
-    @IBAction func completeTask(sender: AnyObject) {
-        self.model.serviceRequest.taskDescription = descriptionBox.text
-        self.model.serviceRequest.taskEnd = NSDate()
+    
+    @IBAction func endBreak(sender: AnyObject) {
+        let currentTime = NSDate()
+        self.model.serviceRequest.srNumber = "Lunch / Break"
+        self.model.serviceRequest.taskEnd = currentTime
+        self.model.serviceRequest.taskDescription = "Break / Lunch"
         self.model.serviceRequest.inProgress = false
         self.model.save()
-        self.post()
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        descriptionBox.layer.borderColor = UIColor.orangeColor().CGColor
-        descriptionBox.layer.borderWidth = 1
-        descriptionBox.layer.cornerRadius = 5
-        
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .MediumStyle
-        formatter.timeStyle = .NoStyle
-        formatter.dateFormat = "hh:mm a"
-        
-        let serviceRequest = self.model.serviceRequest
-        
-        startTime.text = "Start time: " + formatter.stringFromDate(serviceRequest.taskStart!)
-        // Do any additional setup after loading the view.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func post() {
@@ -110,16 +81,41 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
 //                print("fail")
 //            }
         }.resume()
+        
+        
+        
+//        session.dataTaskWithRequest(request) {
+//            data, response, error in
+//            print("doing th is shit")
+//            let httpResponse = response as! NSHTTPURLResponse
+//            print(httpResponse.statusCode)
+//            if httpResponse.statusCode == 200 {
+//                print("successsssss")
+//            }
+//        }
+        
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        endButton.enabled = false
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
+
     
     // MARK: - Navigation
-    
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        post()
         let dest = segue.destinationViewController as! MenuViewController
         dest.model = self.model
     }

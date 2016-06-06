@@ -24,8 +24,7 @@ class WorkerViewController: UIViewController, UITextFieldDelegate {
 
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         if textField === firstNameInput {
-            print(string.characters.count)
-            if string.characters.count > 0 {
+            if textField.text!.characters.count + string.characters.count - range.length > 0 {
                 firstNameSet = true
             }
             else {
@@ -33,8 +32,7 @@ class WorkerViewController: UIViewController, UITextFieldDelegate {
             }
         }
         if textField === lastNameInput {
-            print(string.characters.count)
-            if string.characters.count > 0 {
+            if textField.text!.characters.count + string.characters.count - range.length > 0 {
                 lastNameSet = true
             }
             else {

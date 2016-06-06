@@ -59,13 +59,6 @@ class Model: DataModel {
         else {
             self.worker = self.fetchEntity(Entity.Worker)[0] as! Worker
         }
-//        if self.countEntity(Entity.CurrentStage) == 0 {
-//            self.currentStage = self.insertNewEntity(Entity.CurrentStage) as! CurrentStage
-//        }
-//        else {
-//            self.currentStage = self.fetchEntity(Entity.CurrentStage)[0] as! CurrentStage
-//        }
-//        self.currentStage.currentStage = Stage.Worker.rawValue
     }
     
     func countEntity(entity: Entity) -> Int {
