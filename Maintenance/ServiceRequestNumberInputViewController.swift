@@ -23,6 +23,9 @@ class ServiceRequestNumberInputViewController: UIViewController, UITextFieldDele
         nextButton.enabled = false
         serviceRequestInput.delegate = self
         nextButton.layer.cornerRadius = 5.0
+        serviceRequestInput.layer.borderColor = UIColor(red: 248/255, green: 147/255, blue: 31/255, alpha: 1.0).CGColor
+        serviceRequestInput.layer.borderWidth = 1.0
+        serviceRequestInput.layer.cornerRadius = 5.0
     }
 
     override func didReceiveMemoryWarning() {

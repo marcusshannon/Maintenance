@@ -11,7 +11,6 @@ import UIKit
 class WorkerViewController: UIViewController, UITextFieldDelegate {
 
     var model: DataModel!
-    
     var firstNameSet: Bool = false
     var lastNameSet: Bool = false
     
@@ -49,6 +48,15 @@ class WorkerViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if firstNameSet && lastNameSet {
+            let dest = self.storyboard!.instantiateViewControllerWithIdentifier("Menu") as! MenuViewController
+            dest.model = model
+            self.navigationController!.pushViewController(dest, animated: true)
+        }
+        return true
+    }
 
     
     override func viewDidLoad() {
@@ -57,6 +65,10 @@ class WorkerViewController: UIViewController, UITextFieldDelegate {
         saveButton.enabled = false
         firstNameInput.delegate = self
         lastNameInput.delegate = self
+        if self.model.worker.firstName?.characters.count > 0 && self.model.worker.lastName?.characters.count > 0 {
+            firstNameInput.placeholder = self.model.worker.firstName!
+            lastNameInput.placeholder = self.model.worker.lastName!
+        }
     }
 
     override func didReceiveMemoryWarning() {

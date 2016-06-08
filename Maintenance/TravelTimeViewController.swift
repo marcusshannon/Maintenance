@@ -12,6 +12,8 @@ class TravelTimeViewController: UIViewController {
 
     var model: DataModel!
 
+    //travel to travel start immediatley
+    
     @IBAction func startTravelTime() {
         let currentTime = NSDate()
         self.model.serviceRequest.travelStart = currentTime

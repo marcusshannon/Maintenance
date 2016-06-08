@@ -38,5 +38,9 @@ class MenuViewController: UIViewController {
             let dest = segue.destinationViewController as! BreakViewController
             dest.model = self.model
         }
+        if segue.identifier == "Worker" {
+            let dest = segue.destinationViewController as! WorkerViewController
+            dest.model = self.model
+        }
     }
 }

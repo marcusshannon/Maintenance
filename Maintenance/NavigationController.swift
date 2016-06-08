@@ -11,17 +11,22 @@ import CoreData
 
 class NavigationController: UINavigationController {
     
+    var model: DataModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let model: DataModel = Model()
+        self.model = Model()
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var view = "Worker"
         if model.worker.firstName?.characters.count > 0 && model.worker.lastName?.characters.count > 0 {
-            let dest = storyBoard.instantiateViewControllerWithIdentifier("Menu") as! MenuViewController
+            view = "Menu"
+            let dest = storyBoard.instantiateViewControllerWithIdentifier(view) as! MenuViewController
             dest.model = model
             self.pushViewController(dest, animated: false)
-        } else {
-            let dest = storyBoard.instantiateViewControllerWithIdentifier("Worker") as! WorkerViewController
+        }
+        else {
+            let dest = storyBoard.instantiateViewControllerWithIdentifier(view) as! WorkerViewController
             dest.model = model
             self.pushViewController(dest, animated: false)
         }
