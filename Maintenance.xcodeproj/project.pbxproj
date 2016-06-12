@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0ECD6D9DA6074B8F76DB7304 /* Pods_Maintenance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E5622FDD97CF21DDC6AD595 /* Pods_Maintenance.framework */; };
 		D20DD3E31D031C300097D55A /* BreakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20DD3E21D031C300097D55A /* BreakViewController.swift */; };
+		D23AFE7E1D0B964F0068E3CC /* GoogleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23AFE7D1D0B964F0068E3CC /* GoogleViewController.swift */; };
 		D24A1FA21CDF9CB10084DD18 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A1FA11CDF9CB10084DD18 /* Model.swift */; };
 		D24C83491CCEE63800EFD455 /* WorkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C83481CCEE63800EFD455 /* WorkerViewController.swift */; };
 		D29FC60F1CB72FD700DD5BC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29FC60E1CB72FD700DD5BC7 /* AppDelegate.swift */; };
@@ -16,6 +18,7 @@
 		D29FC6161CB72FD700DD5BC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D29FC6151CB72FD700DD5BC7 /* Assets.xcassets */; };
 		D29FC6241CB72FD700DD5BC7 /* MaintenanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29FC6231CB72FD700DD5BC7 /* MaintenanceTests.swift */; };
 		D29FC62F1CB72FD700DD5BC7 /* MaintenanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29FC62E1CB72FD700DD5BC7 /* MaintenanceUITests.swift */; };
+		D2B59D4A1D0A1EA600C5AB08 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2B59D491D0A1EA600C5AB08 /* GoogleService-Info.plist */; };
 		D2B9A4381CC2895800A156D2 /* ServiceRequestNumberInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A4371CC2895800A156D2 /* ServiceRequestNumberInputViewController.swift */; };
 		D2B9A43C1CC2F64A00A156D2 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A43B1CC2F64A00A156D2 /* LocationViewController.swift */; };
 		D2B9A43E1CC3034500A156D2 /* TravelRequiredViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B9A43D1CC3034500A156D2 /* TravelRequiredViewController.swift */; };
@@ -51,7 +54,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E70EDCCD88FB9796D4EE3E9 /* Pods-Maintenance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Maintenance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Maintenance/Pods-Maintenance.debug.xcconfig"; sourceTree = "<group>"; };
+		9E5622FDD97CF21DDC6AD595 /* Pods_Maintenance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Maintenance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C42DF27300AEB86A5CF9F86D /* Pods-Maintenance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Maintenance.release.xcconfig"; path = "Pods/Target Support Files/Pods-Maintenance/Pods-Maintenance.release.xcconfig"; sourceTree = "<group>"; };
 		D20DD3E21D031C300097D55A /* BreakViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakViewController.swift; sourceTree = "<group>"; };
+		D23AFE7D1D0B964F0068E3CC /* GoogleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleViewController.swift; sourceTree = "<group>"; };
+		D23AFE7F1D0B98140068E3CC /* Maintenance-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Maintenance-Bridging-Header.h"; sourceTree = "<group>"; };
 		D24A1FA11CDF9CB10084DD18 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D24C83481CCEE63800EFD455 /* WorkerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerViewController.swift; sourceTree = "<group>"; };
 		D29FC60B1CB72FD700DD5BC7 /* Maintenance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maintenance.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +74,7 @@
 		D29FC62A1CB72FD700DD5BC7 /* MaintenanceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaintenanceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D29FC62E1CB72FD700DD5BC7 /* MaintenanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceUITests.swift; sourceTree = "<group>"; };
 		D29FC6301CB72FD700DD5BC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2B59D491D0A1EA600C5AB08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D2B9A4371CC2895800A156D2 /* ServiceRequestNumberInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRequestNumberInputViewController.swift; sourceTree = "<group>"; };
 		D2B9A43B1CC2F64A00A156D2 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		D2B9A43D1CC3034500A156D2 /* TravelRequiredViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelRequiredViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ECD6D9DA6074B8F76DB7304 /* Pods_Maintenance.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +118,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A449CA5E71B78D98F841622 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0E70EDCCD88FB9796D4EE3E9 /* Pods-Maintenance.debug.xcconfig */,
+				C42DF27300AEB86A5CF9F86D /* Pods-Maintenance.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D29FC6021CB72FD700DD5BC7 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +140,8 @@
 				D29FC6221CB72FD700DD5BC7 /* MaintenanceTests */,
 				D29FC62D1CB72FD700DD5BC7 /* MaintenanceUITests */,
 				D29FC60C1CB72FD700DD5BC7 /* Products */,
+				7A449CA5E71B78D98F841622 /* Pods */,
+				D7D01BF0701A247AB621E3D0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,8 +173,11 @@
 				D2E179AB1CBA9C97008F64F2 /* MenuViewController.swift */,
 				D29FC6151CB72FD700DD5BC7 /* Assets.xcassets */,
 				D29FC61A1CB72FD700DD5BC7 /* Info.plist */,
+				D2B59D491D0A1EA600C5AB08 /* GoogleService-Info.plist */,
 				D2E179981CB874EE008F64F2 /* Model.xcdatamodeld */,
 				D2E1799F1CB8779D008F64F2 /* DataController.swift */,
+				D23AFE7D1D0B964F0068E3CC /* GoogleViewController.swift */,
+				D23AFE7F1D0B98140068E3CC /* Maintenance-Bridging-Header.h */,
 			);
 			path = Maintenance;
 			sourceTree = "<group>";
@@ -176,6 +200,14 @@
 			path = MaintenanceUITests;
 			sourceTree = "<group>";
 		};
+		D7D01BF0701A247AB621E3D0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E5622FDD97CF21DDC6AD595 /* Pods_Maintenance.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -183,9 +215,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D29FC6331CB72FD700DD5BC7 /* Build configuration list for PBXNativeTarget "Maintenance" */;
 			buildPhases = (
+				BB5D66739A204CEC6AECB236 /* 📦 Check Pods Manifest.lock */,
 				D29FC6071CB72FD700DD5BC7 /* Sources */,
 				D29FC6081CB72FD700DD5BC7 /* Frameworks */,
 				D29FC6091CB72FD700DD5BC7 /* Resources */,
+				B5252440FE11D974F8EC9090 /* 📦 Embed Pods Frameworks */,
+				6F98BCBF751F34727912FAC5 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -286,6 +321,7 @@
 			files = (
 				D29FC6161CB72FD700DD5BC7 /* Assets.xcassets in Resources */,
 				D29FC6141CB72FD700DD5BC7 /* Main.storyboard in Resources */,
+				D2B59D4A1D0A1EA600C5AB08 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +341,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6F98BCBF751F34727912FAC5 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Maintenance/Pods-Maintenance-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5252440FE11D974F8EC9090 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Maintenance/Pods-Maintenance-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB5D66739A204CEC6AECB236 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D29FC6071CB72FD700DD5BC7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -315,6 +399,7 @@
 				D2E179A41CB9B0DD008F64F2 /* ServiceRequest.swift in Sources */,
 				D2E1799E1CB87755008F64F2 /* Worker.swift in Sources */,
 				D2B9A4401CC31F0A00A156D2 /* TravelTimeViewController.swift in Sources */,
+				D23AFE7E1D0B964F0068E3CC /* GoogleViewController.swift in Sources */,
 				D2B9A4421CC3218B00A156D2 /* NavigationController.swift in Sources */,
 				D2E179A01CB8779D008F64F2 /* DataController.swift in Sources */,
 				D2B9A43C1CC2F64A00A156D2 /* LocationViewController.swift in Sources */,
@@ -463,8 +548,10 @@
 		};
 		D29FC6341CB72FD700DD5BC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E70EDCCD88FB9796D4EE3E9 /* Pods-Maintenance.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Maintenance/Info.plist;
@@ -473,14 +560,18 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ca.akiba.Maintenance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Maintenance/Maintenance-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
 		D29FC6351CB72FD700DD5BC7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C42DF27300AEB86A5CF9F86D /* Pods-Maintenance.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Maintenance/Info.plist;
@@ -489,6 +580,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ca.akiba.Maintenance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Maintenance/Maintenance-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

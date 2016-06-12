@@ -7,26 +7,16 @@
 //
 
 import UIKit
+import GTMOAuth2
+import GoogleAPIClientForREST
 
 class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     
     var model: DataModel!
-    
-    @IBAction func serverDetails(sender: AnyObject) {
-        //        let serviceRequest = self.model.serviceRequest
-        //        let worker = self.model.worker
-        //        serviceRequest.taskDescription = descriptionBox.text
-        //        serviceRequest.taskEnd = NSDate()
-        //        self.model.save()
-        //
-        //
-        //        let alert = UIAlertView()
-        //        alert.title = "Seding to server:"
-        //        alert.message = "Task Description: \(serviceRequest.taskDescription!) \n SR #: \(serviceRequest.srNumber!) \n Location: \(serviceRequest.location!) \n Task Start: \(serviceRequest.taskStart!) \n Task End: \(serviceRequest.taskEnd!) \n Travel Start: \(serviceRequest.travelStart!) \n Travel End: \(serviceRequest.travelEnd!)\n Worker: \(worker.firstName!) \(worker.lastName!)"
-        //        alert.addButtonWithTitle("Ok")
-        //        alert.show()
-    }
-    
+    let kKeychainItemName = "Google Sheets API"
+    let kClientID = "349355649504-509s16i41hangum1u21j64gmjpat2v0d.apps.googleusercontent.com"
+    let service = GTLRService()
+
     
     @IBOutlet weak var startTime: UILabel!
     
@@ -49,6 +39,11 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let auth = GTMOAuth2ViewControllerTouch.authForGoogleFromKeychainForName(kKeychainItemName, clientID: kClientID, clientSecret: nil)
+        service.authorizer = auth
+        service.rootURLString = "https://sheets.googleapis.com/"
+
+        
         descriptionBox.layer.borderColor = UIColor.orangeColor().CGColor
         descriptionBox.layer.borderWidth = 1
         descriptionBox.layer.cornerRadius = 5
@@ -70,48 +65,72 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     func post() {
-        let serviceRequest = self.model.serviceRequest
+        
+        let dimensionRequest = GTLRSheets_InsertDimensionRequest()
+        dimensionRequest.inheritFromBefore = false
+        let dimensionRange = GTLRSheets_DimensionRange()
+        dimensionRange.dimension = "ROWS"
+        dimensionRange.startIndex = 0
+        dimensionRange.endIndex = 1
+        dimensionRange.sheetId = 0
+        dimensionRequest.range = dimensionRange
+        
+        let request = GTLRSheets_Request()
+        request.insertDimension = dimensionRequest
+        
+        let batch = GTLRSheets_BatchUpdateSpreadsheetRequest()
+        batch.requests = [request]
+        
+        let insertQuery = GTLRSheetsQuery_SpreadsheetsBatchUpdate.queryWithObject(batch, spreadsheetId: "1MMKqgvow3H1swWllw_5mOqweKHqfdquXHtmRgXOQxQE")
+        
+        
+        service.executeQuery(insertQuery, delegate: self, didFinishSelector: #selector(self.addedNewRow(_:finishedWithObject:error:)))
+        
+    }
+        
+    func addedNewRow(serviceTicket: GTLRServiceTicket, finishedWithObject: GTLRObject, error: NSError) {
+        print(finishedWithObject.JSON)
+        
         let worker = self.model.worker
+        let serviceRequest = self.model.serviceRequest
         
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "hh:mm a"
+        formatter.dateFormat = "M/d/y H:mm:ss"
+        print(formatter.stringFromDate(serviceRequest.taskStart!))
         
         
-        let data = ["firstName": worker.firstName!,
-                    "lastName": worker.lastName!,
-                    "serviceRequestNumber": serviceRequest.srNumber!,
-                    "location": serviceRequest.location!,
-                    "taskDescription": serviceRequest.taskDescription!,
-                    "travelStart": formatter.stringFromDate(serviceRequest.travelStart!),
-                    "travelEnd": formatter.stringFromDate(serviceRequest.travelEnd!),
-                    "taskStart": formatter.stringFromDate(serviceRequest.taskStart!),
-                    "taskEnd": formatter.stringFromDate(serviceRequest.taskEnd!),
-                    "workInProgress": serviceRequest.inProgress!]
+        var travelStart: String?
+        var travelEnd: String?
         
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://192.168.1.110:4000")!)
-        request.HTTPMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        do {
-            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(data, options: NSJSONWritingOptions(rawValue: 0))
+        if serviceRequest.travelStart == serviceRequest.travelEnd {
+            travelStart = "No Travel"
+            travelEnd = "No Travel"
         }
-        catch {
-            fatalError()
+        else {
+            travelStart = formatter.stringFromDate(serviceRequest.travelStart!)
+            travelEnd = formatter.stringFromDate(serviceRequest.travelEnd!)
+        }
+        var completed = "Completed"
+        if serviceRequest.inProgress == 1 {
+            completed = "Work in progress"
         }
         
-        let session = NSURLSession.sharedSession()
-        //let task = session.dataTaskWithRequest(request)
+        let valueRange = GTLRSheets_ValueRange()
+        valueRange.majorDimension = "ROWS"
+        valueRange.range = "A1"
+        valueRange.values = [[worker.firstName!, worker.lastName!, serviceRequest.srNumber!, serviceRequest.location!, travelStart!, travelEnd!, formatter.stringFromDate(serviceRequest.taskStart!), formatter.stringFromDate(serviceRequest.taskEnd!), serviceRequest.taskDescription!, completed]]
         
-        session.dataTaskWithRequest(request) { (data, response, error) in
-//            let httpResponse = response as! NSHTTPURLResponse
-//            if httpResponse.statusCode == 200 {
-//                print("success")
-//            }
-//            else {
-//                print("fail")
-//            }
-        }.resume()
+        
+        let query = GTLRSheetsQuery_SpreadsheetsValuesUpdate.queryWithObject(valueRange, spreadsheetId: "1MMKqgvow3H1swWllw_5mOqweKHqfdquXHtmRgXOQxQE", range: "A1")
+        query.valueInputOption = "USER_ENTERED"
+        
+        service.executeQuery(query, delegate: self, didFinishSelector: #selector(self.addedData(_:finishedWithObject:error:))
+)
     }
     
+    func addedData(serviceTicket: GTLRServiceTicket, finishedWithObject: GTLRObject, error: NSError) {
+        print(finishedWithObject.JSON)
+    }
     
     
     // MARK: - Navigation
