@@ -14,7 +14,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     
     var model: DataModel!
     let kKeychainItemName = "Google Sheets API"
-    let kClientID = "858806897453-pvl1hdkkdpqnn24ofbdon1icsgdojglp.apps.googleusercontent.com"
+    let kClientID = "520986608923-k8rng83ktia0tufr8okh2fvosh2orroq.apps.googleusercontent.com"
     let service = GTLRService()
 
     
@@ -80,7 +80,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         let batch = GTLRSheets_BatchUpdateSpreadsheetRequest()
         batch.requests = [request]
         
-        let insertQuery = GTLRSheetsQuery_SpreadsheetsBatchUpdate.queryWithObject(batch, spreadsheetId: "1MMKqgvow3H1swWllw_5mOqweKHqfdquXHtmRgXOQxQE")
+        let insertQuery = GTLRSheetsQuery_SpreadsheetsBatchUpdate.queryWithObject(batch, spreadsheetId: "1i_p3UkMb09BcgOdmyILyWcgoHZ5sJhx4sJlMdJrHLzI")
         
         
         service.executeQuery(insertQuery, delegate: self, didFinishSelector: #selector(self.addedNewRow(_:finishedWithObject:error:)))
@@ -88,14 +88,12 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     }
         
     func addedNewRow(serviceTicket: GTLRServiceTicket, finishedWithObject: GTLRObject, error: NSError) {
-        print(finishedWithObject.JSON)
         
         let worker = self.model.worker
         let serviceRequest = self.model.serviceRequest
         
         let formatter = NSDateFormatter()
         formatter.dateFormat = "M/d/y H:mm:ss"
-        print(formatter.stringFromDate(serviceRequest.taskStart!))
         
         
         var travelStart: String?
@@ -120,14 +118,13 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         valueRange.values = [[worker.firstName!, worker.lastName!, serviceRequest.srNumber!, serviceRequest.location!, travelStart!, travelEnd!, formatter.stringFromDate(serviceRequest.taskStart!), formatter.stringFromDate(serviceRequest.taskEnd!), serviceRequest.taskDescription!, completed]]
         
         
-        let query = GTLRSheetsQuery_SpreadsheetsValuesUpdate.queryWithObject(valueRange, spreadsheetId: "1MMKqgvow3H1swWllw_5mOqweKHqfdquXHtmRgXOQxQE", range: "A1")
+        let query = GTLRSheetsQuery_SpreadsheetsValuesUpdate.queryWithObject(valueRange, spreadsheetId: "1i_p3UkMb09BcgOdmyILyWcgoHZ5sJhx4sJlMdJrHLzI", range: "A1")
         query.valueInputOption = "USER_ENTERED"
         
         service.executeQuery(query, delegate: self, didFinishSelector: #selector(self.addedData(_:finishedWithObject:error:)))
     }
     
     func addedData(serviceTicket: GTLRServiceTicket, finishedWithObject: GTLRObject, error: NSError) {
-        print(finishedWithObject.JSON)
     }
     
     

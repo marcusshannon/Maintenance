@@ -11,6 +11,7 @@
 		D20DD3E31D031C300097D55A /* BreakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20DD3E21D031C300097D55A /* BreakViewController.swift */; };
 		D23AFE7E1D0B964F0068E3CC /* GoogleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23AFE7D1D0B964F0068E3CC /* GoogleViewController.swift */; };
 		D23AFE831D0E4FD70068E3CC /* client_520986608923-k8rng83ktia0tufr8okh2fvosh2orroq.apps.googleusercontent.com.plist in Resources */ = {isa = PBXBuildFile; fileRef = D23AFE821D0E4FD70068E3CC /* client_520986608923-k8rng83ktia0tufr8okh2fvosh2orroq.apps.googleusercontent.com.plist */; };
+		D23AFE851D0E575B0068E3CC /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = D23AFE841D0E575B0068E3CC /* GTMOAuth2ViewTouch.xib */; };
 		D24A1FA21CDF9CB10084DD18 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24A1FA11CDF9CB10084DD18 /* Model.swift */; };
 		D24C83491CCEE63800EFD455 /* WorkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24C83481CCEE63800EFD455 /* WorkerViewController.swift */; };
 		D29FC60F1CB72FD700DD5BC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29FC60E1CB72FD700DD5BC7 /* AppDelegate.swift */; };
@@ -61,6 +62,7 @@
 		D23AFE7D1D0B964F0068E3CC /* GoogleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleViewController.swift; sourceTree = "<group>"; };
 		D23AFE7F1D0B98140068E3CC /* Maintenance-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Maintenance-Bridging-Header.h"; sourceTree = "<group>"; };
 		D23AFE821D0E4FD70068E3CC /* client_520986608923-k8rng83ktia0tufr8okh2fvosh2orroq.apps.googleusercontent.com.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "client_520986608923-k8rng83ktia0tufr8okh2fvosh2orroq.apps.googleusercontent.com.plist"; path = "../../../Downloads/client_520986608923-k8rng83ktia0tufr8okh2fvosh2orroq.apps.googleusercontent.com.plist"; sourceTree = "<group>"; };
+		D23AFE841D0E575B0068E3CC /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = ../Pods/GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
 		D24A1FA11CDF9CB10084DD18 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D24C83481CCEE63800EFD455 /* WorkerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerViewController.swift; sourceTree = "<group>"; };
 		D29FC60B1CB72FD700DD5BC7 /* Maintenance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maintenance.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +160,7 @@
 		D29FC60D1CB72FD700DD5BC7 /* Maintenance */ = {
 			isa = PBXGroup;
 			children = (
+				D23AFE841D0E575B0068E3CC /* GTMOAuth2ViewTouch.xib */,
 				D29FC60E1CB72FD700DD5BC7 /* AppDelegate.swift */,
 				D24A1FA11CDF9CB10084DD18 /* Model.swift */,
 				D29FC6101CB72FD700DD5BC7 /* ViewController.swift */,
@@ -319,6 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D23AFE851D0E575B0068E3CC /* GTMOAuth2ViewTouch.xib in Resources */,
 				D29FC6161CB72FD700DD5BC7 /* Assets.xcassets in Resources */,
 				D29FC6141CB72FD700DD5BC7 /* Main.storyboard in Resources */,
 				D23AFE831D0E4FD70068E3CC /* client_520986608923-k8rng83ktia0tufr8okh2fvosh2orroq.apps.googleusercontent.com.plist in Resources */,

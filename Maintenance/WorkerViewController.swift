@@ -16,7 +16,7 @@ class WorkerViewController: UIViewController, UITextFieldDelegate {
     var lastNameSet: Bool = false
     private let kKeychainItemName = "Google Sheets API"
     private let scope = "https://www.googleapis.com/auth/spreadsheets"
-    let kClientID = "858806897453-pvl1hdkkdpqnn24ofbdon1icsgdojglp.apps.googleusercontent.com"
+    let kClientID = "520986608923-k8rng83ktia0tufr8okh2fvosh2orroq.apps.googleusercontent.com"
 
     
     @IBOutlet weak var firstNameInput: UITextField!
@@ -78,11 +78,6 @@ class WorkerViewController: UIViewController, UITextFieldDelegate {
             firstNameInput.placeholder = self.model.worker.firstName!
             lastNameInput.placeholder = self.model.worker.lastName!
         }
-        
-        if let auth = GTMOAuth2ViewControllerTouch.authForGoogleFromKeychainForName(kKeychainItemName, clientID: kClientID, clientSecret: nil) {
-            print(auth.canAuthorize)
-        }
-        
     }
     
     override func viewDidAppear(animated: Bool) {
