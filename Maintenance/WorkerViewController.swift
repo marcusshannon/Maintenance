@@ -16,7 +16,7 @@ class WorkerViewController: UIViewController, UITextFieldDelegate {
     var lastNameSet: Bool = false
     private let kKeychainItemName = "Google Sheets API"
     private let scope = "https://www.googleapis.com/auth/spreadsheets"
-    let kClientID = "349355649504-509s16i41hangum1u21j64gmjpat2v0d.apps.googleusercontent.com"
+    let kClientID = "858806897453-pvl1hdkkdpqnn24ofbdon1icsgdojglp.apps.googleusercontent.com"
 
     
     @IBOutlet weak var firstNameInput: UITextField!
@@ -24,6 +24,11 @@ class WorkerViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lastNameInput: UITextField!
     
     @IBOutlet weak var saveButton: UIButton!
+    
+    @IBAction func googleButton(sender: AnyObject) {
+        self.presentViewController(createAuthController(), animated: true, completion: nil)
+    }
+    
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         if textField === firstNameInput {
@@ -73,25 +78,15 @@ class WorkerViewController: UIViewController, UITextFieldDelegate {
             firstNameInput.placeholder = self.model.worker.firstName!
             lastNameInput.placeholder = self.model.worker.lastName!
         }
+        
+        if let auth = GTMOAuth2ViewControllerTouch.authForGoogleFromKeychainForName(kKeychainItemName, clientID: kClientID, clientSecret: nil) {
+            print(auth.canAuthorize)
+        }
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         
-        var canAuth = false
-        
-        if let auth = GTMOAuth2ViewControllerTouch.authForGoogleFromKeychainForName(kKeychainItemName, clientID: kClientID, clientSecret: nil) {
-            if auth.canAuthorize {
-                canAuth = true
-            }
-        }
-        
-        if !canAuth {
-            self.presentViewController(createAuthController(), animated: true, completion: nil)
-        }
-    }
-    
-    func dismiss() {
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     private func createAuthController() -> GTMOAuth2ViewControllerTouch {
@@ -101,7 +96,7 @@ class WorkerViewController: UIViewController, UITextFieldDelegate {
     
     func viewController(vc : UIViewController, finishedWithAuth authResult : GTMOAuth2Authentication, error : NSError?) {
         //dismissViewControllerAnimated(true, completion: nil)
-        self.dismiss()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     

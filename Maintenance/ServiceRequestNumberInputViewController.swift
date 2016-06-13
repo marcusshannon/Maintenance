@@ -27,7 +27,7 @@ class ServiceRequestNumberInputViewController: UIViewController, UITextFieldDele
         serviceRequestInput.layer.borderWidth = 1.0
         serviceRequestInput.layer.cornerRadius = 5.0
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -45,17 +45,21 @@ class ServiceRequestNumberInputViewController: UIViewController, UITextFieldDele
         return true
     }
     
-
-    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        self.model.serviceRequest.srNumber = serviceRequestInput.text!
-        self.model.save()
-        let dest = segue.destinationViewController as! LocationViewController
-        dest.model = self.model
+        if segue.identifier == "cancel" {
+            let dest = segue.destinationViewController as! MenuViewController
+            dest.model = self.model
+        }
+        else {
+            self.model.serviceRequest.srNumber = serviceRequestInput.text!
+            self.model.save()
+            let dest = segue.destinationViewController as! LocationViewController
+            dest.model = self.model
+        }
     }
 }

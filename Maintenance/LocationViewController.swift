@@ -19,6 +19,7 @@ class LocationViewController: UIViewController, UIPickerViewDataSource, UIPicker
         // Do any additional setup after loading the view.
         locationPicker.delegate = self
         locationPicker.dataSource = self
+        locationPicker.selectRow(7, inComponent: 0, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,7 +27,7 @@ class LocationViewController: UIViewController, UIPickerViewDataSource, UIPicker
         // Dispose of any resources that can be recreated.
     }
     
-    let locations = ["Bayer's Lake", "Clifton", "Thornhill", "Joseph Zatzman", "Almon", "Walker", "White Rose", "Kenmount", "Commonwealth", "Topsal", "Willow", "Upham", "Glendale"]
+    let locations = ["Bayer's Lake", "Clifton", "Thornhill", "Joseph Zatzman", "Almon", "Walker", "White Rose", "Kenmount", "Commonwealth", "Topsail", "Willow", "Upham", "Glendale"]
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -39,6 +40,8 @@ class LocationViewController: UIViewController, UIPickerViewDataSource, UIPicker
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return locations.sort()[row]
     }
+    
+    
     
 
     

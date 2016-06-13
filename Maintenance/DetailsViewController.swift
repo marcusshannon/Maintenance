@@ -14,7 +14,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
     
     var model: DataModel!
     let kKeychainItemName = "Google Sheets API"
-    let kClientID = "349355649504-509s16i41hangum1u21j64gmjpat2v0d.apps.googleusercontent.com"
+    let kClientID = "858806897453-pvl1hdkkdpqnn24ofbdon1icsgdojglp.apps.googleusercontent.com"
     let service = GTLRService()
 
     
@@ -43,7 +43,6 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         service.authorizer = auth
         service.rootURLString = "https://sheets.googleapis.com/"
 
-        
         descriptionBox.layer.borderColor = UIColor.orangeColor().CGColor
         descriptionBox.layer.borderWidth = 1
         descriptionBox.layer.cornerRadius = 5
@@ -124,8 +123,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         let query = GTLRSheetsQuery_SpreadsheetsValuesUpdate.queryWithObject(valueRange, spreadsheetId: "1MMKqgvow3H1swWllw_5mOqweKHqfdquXHtmRgXOQxQE", range: "A1")
         query.valueInputOption = "USER_ENTERED"
         
-        service.executeQuery(query, delegate: self, didFinishSelector: #selector(self.addedData(_:finishedWithObject:error:))
-)
+        service.executeQuery(query, delegate: self, didFinishSelector: #selector(self.addedData(_:finishedWithObject:error:)))
     }
     
     func addedData(serviceTicket: GTLRServiceTicket, finishedWithObject: GTLRObject, error: NSError) {

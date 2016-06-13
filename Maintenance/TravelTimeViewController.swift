@@ -11,38 +11,16 @@ import UIKit
 class TravelTimeViewController: UIViewController {
 
     var model: DataModel!
-
-    //travel to travel start immediatley
-    
-    @IBAction func startTravelTime() {
-        let currentTime = NSDate()
-        self.model.serviceRequest.travelStart = currentTime
-        self.model.save()
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .MediumStyle
-        formatter.timeStyle = .NoStyle
-        formatter.dateFormat = "hh:mm a"
-        startButton.enabled = false
-        startButton.setTitle(formatter.stringFromDate(currentTime), forState: UIControlState.Disabled)
-        nextButton.enabled = true
-    }
-
-    @IBOutlet weak var startButton: UIButton!
-    
-    @IBOutlet weak var nextButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        nextButton.enabled = false
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
     
     // MARK: - Navigation
 
