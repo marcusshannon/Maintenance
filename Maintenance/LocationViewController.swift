@@ -51,8 +51,8 @@ class LocationViewController: UIViewController, UIPickerViewDataSource, UIPicker
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        self.model.serviceRequest.location = locations[locationPicker.selectedRowInComponent(0)]
-        //self.model.currentStage.currentStage = Stage.Location.rawValue
+        let alphabetically = locations.sort()
+        self.model.serviceRequest.location = alphabetically[locationPicker.selectedRowInComponent(0)]
         self.model.save()
         let dest = segue.destinationViewController as! TravelRequiredViewController
         dest.model = self.model

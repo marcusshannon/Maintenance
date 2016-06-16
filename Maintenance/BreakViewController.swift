@@ -39,8 +39,8 @@ class BreakViewController: UIViewController {
     
     @IBAction func endBreak(sender: AnyObject) {
         let currentTime = NSDate()
-        self.model.serviceRequest.location = "Lunch / Break"
-        self.model.serviceRequest.srNumber = "Lunch / Break"
+        self.model.serviceRequest.location = "Break / Lunch"
+        self.model.serviceRequest.srNumber = "Break / Lunch"
         self.model.serviceRequest.taskEnd = currentTime
         self.model.serviceRequest.taskDescription = "Break / Lunch"
         self.model.serviceRequest.inProgress = false
@@ -68,7 +68,11 @@ class BreakViewController: UIViewController {
         let worker = self.model.worker
         let serviceRequest = self.model.serviceRequest
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "M/d/y H:mm:ss"
+        formatter.dateFormat = "M/d/y"
+        
+        var day = formatter.stringFromDate(serviceRequest.taskStart!)
+        
+        formatter.dateFormat = "H:mm:ss"
         var travelStart: String?
         var travelEnd: String?
         if serviceRequest.travelStart == serviceRequest.travelEnd {
@@ -86,7 +90,7 @@ class BreakViewController: UIViewController {
         let valueRange = GTLRSheets_ValueRange()
         valueRange.majorDimension = "ROWS"
         valueRange.range = "A1"
-        valueRange.values = [[worker.firstName!, worker.lastName!, serviceRequest.srNumber!, serviceRequest.location!, travelStart!, travelEnd!, formatter.stringFromDate(serviceRequest.taskStart!), formatter.stringFromDate(serviceRequest.taskEnd!), serviceRequest.taskDescription!, completed]]
+        valueRange.values = [[day, worker.firstName!, worker.lastName!, serviceRequest.srNumber!, serviceRequest.location!, travelStart!, travelEnd!, formatter.stringFromDate(serviceRequest.taskStart!), formatter.stringFromDate(serviceRequest.taskEnd!), serviceRequest.taskDescription!, completed]]
         let query = GTLRSheetsQuery_SpreadsheetsValuesUpdate.queryWithObject(valueRange, spreadsheetId: "1i_p3UkMb09BcgOdmyILyWcgoHZ5sJhx4sJlMdJrHLzI", range: "A1")
         query.valueInputOption = "USER_ENTERED"
         

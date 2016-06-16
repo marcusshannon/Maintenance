@@ -93,9 +93,12 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         let serviceRequest = self.model.serviceRequest
         
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "M/d/y H:mm:ss"
+        formatter.dateFormat = "M/d/y"
         
+        var day = formatter.stringFromDate(serviceRequest.taskStart!)
         
+        formatter.dateFormat = "H:mm:ss"
+
         var travelStart: String?
         var travelEnd: String?
         
@@ -115,7 +118,7 @@ class DetailsViewController: UIViewController, UINavigationControllerDelegate {
         let valueRange = GTLRSheets_ValueRange()
         valueRange.majorDimension = "ROWS"
         valueRange.range = "A1"
-        valueRange.values = [[worker.firstName!, worker.lastName!, serviceRequest.srNumber!, serviceRequest.location!, travelStart!, travelEnd!, formatter.stringFromDate(serviceRequest.taskStart!), formatter.stringFromDate(serviceRequest.taskEnd!), serviceRequest.taskDescription!, completed]]
+        valueRange.values = [[day, worker.firstName!, worker.lastName!, serviceRequest.srNumber!, serviceRequest.location!, travelStart!, travelEnd!, formatter.stringFromDate(serviceRequest.taskStart!), formatter.stringFromDate(serviceRequest.taskEnd!), serviceRequest.taskDescription!, completed]]
         
         
         let query = GTLRSheetsQuery_SpreadsheetsValuesUpdate.queryWithObject(valueRange, spreadsheetId: "1i_p3UkMb09BcgOdmyILyWcgoHZ5sJhx4sJlMdJrHLzI", range: "A1")
