@@ -1,4 +1,4 @@
 # Maintenance
 Metro Self Storage
 
-iOS app for Metro Self Storage, for tracking maintenance team's times/locations and uploading to a Google Doc.
+iOS app for Metro Self Storage, purpose: to track maintenance team's times/locations and upload that data to a Google Sheet.
